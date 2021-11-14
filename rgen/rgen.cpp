@@ -22,7 +22,7 @@
 
 int main(int argc, char* argv[]) {
   using fsp = std::filesystem::path;
-  CLI::App            app{"Generate resource sources"};
+  CLI::App            app{"Generate resource artifacts"};
   std::pair<fsp, fsp> files{"./resource.hpp", "./resource.cpp"};
   fsp                 jsonfilepath;
 

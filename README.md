@@ -1,6 +1,6 @@
 # rgen
 
-## Getting started
+## Getting Started
 `rgen` is a cross platform resource generator that generates the appropriate header and source files containing binary resource data.
 
 Resource data can be specified using a JSON configuration file as shown in the example below
@@ -37,7 +37,7 @@ extern bytearray_t loip2;
 ```
 `rgen` internally represents the data as an array of `unsigned char` in the generated source file which can be accessed via `std::basic_string_view<unsigned char>` (aliased to `bytearray_t`) variables generated from the specified `id`.
 
-Additionally, a convinece method to convert from `std::basic_string_view<unsigned char>` to `std::string_view` is provided, as most existing APIs use `const char*`.
+Additionally, a convenience method to convert from `std::basic_string_view<unsigned char>` to `std::string_view` is provided, as most existing APIs use `const char*`.
 
 The generated source file must be compiled using a target compiler (which maybe different from a host compiler) which supports `C++17`, and can be compiled either as `obj` file or `shared` or `static` library.
 
@@ -54,3 +54,21 @@ Options:
 ```
 
 Here, the header and source file names are optional and default to using `header=./resource.hpp` and `source=./resource.cpp` both of which are relative to the directory containing the input JSON file. The same applies to any relative resource paths specified within the JSON file as well.
+
+## Build and Installation
+`rgen` uses [`build2`](https://build2.org/) build system and can be consumed by placing a build tool dependency clause in the package manifest.
+```
+depends: * rgen
+```
+
+Resource files can be generated as a part of the build process by using the following ad-hoc rule in a `buildfile`
+```
+import! rgen = rgen%exe{rgen}
+<hxx{resource} cxx{resource}>: $rgen file{res.json}
+{{
+  diag rgen $path($<[1])
+  $rgen --input $path($<[1]) \
+        --header $path($>[0]) \
+        --source $path($>[1])
+}}
+```
