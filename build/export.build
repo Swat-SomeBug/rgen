@@ -1,6 +1,6 @@
 $out_root/
 {
-  include ./
+  include rgen/
 }
 
-export $out_root/$import.target
+export $out_root/rgen/$import.target

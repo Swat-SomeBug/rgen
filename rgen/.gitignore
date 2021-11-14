@@ -35,6 +35,8 @@ compile_commands.json
 *.exe.manifest
 *.pc
 
+# Outputs
+rgen
 # Testscript output directory (can be symlink).
 #
 test-rgen
