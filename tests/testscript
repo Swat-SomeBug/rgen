@@ -1,0 +1,13 @@
+: Printing
+$* >>~%EOM%
+%Printing data at: 0x.*%
+%Buffer total buffer size: 1991%
+%(
+%.*%
+%)+
+%Printing data at: 0x.*%
+%Buffer total buffer size: 1167%
+%(
+%.*%
+%)+
+EOM

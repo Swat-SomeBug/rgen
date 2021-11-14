@@ -1,0 +1,14 @@
+{
+  "namespace": "R",
+  "resources": [
+    {
+      "id": "loip1",
+      "path": "./loremipsum1.txt",
+      "namespace": "lm1"
+    },
+    {
+      "id": "loip2",
+      "path": "./loremipsum2.txt"
+    }
+  ]
+}

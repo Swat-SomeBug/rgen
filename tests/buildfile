@@ -1,0 +1,10 @@
+import! rgen = rgen%exe{rgen}
+
+./: exe{rgen-test}: cxx{rgen-test} testscript hxx{resource} cxx{resource} file{*.txt}
+
+<hxx{resource} cxx{resource}>: $rgen file{test.json}
+{{
+  diag rgen $path($<[1])
+  env -c $src_base -- $rgen --input $path($<[1]) --header $path($>[0]) --source $path($>[1])
+}}
+cxx.poptions += "-I$src_root" "-I$out_root"
