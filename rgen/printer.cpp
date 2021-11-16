@@ -7,6 +7,7 @@
  */
 
 #include <fstream>
+#include <iostream>
 #include <printer.hpp>
 
 namespace rgen {
@@ -30,9 +31,13 @@ void print_header(const std::filesystem::path& file, const info& rinfo) {
   o_h << "}\n";
 }
 
-void print_source(const std::filesystem::path& file, const info& rinfo) {
-  std::ofstream o_src{file};
-  o_src << std::hex << "#include <resource.h>\n"
+void print_source(
+    const std::pair<std::filesystem::path, std::filesystem::path>& files,
+    const info&                                                    rinfo) {
+  auto&         interfacePath = files.first;
+  auto&         implPath      = files.second;
+  std::ofstream o_src{implPath};
+  o_src << std::hex << "#include <" << interfacePath.filename().c_str() << ">\n"
         << "namespace " << rinfo.topns << " {\n"
         << "using bytearray_t = std::basic_string_view<unsigned char>;\n"
         << "std::string_view to_string_view(bytearray_t ba) { return "

@@ -12,5 +12,7 @@
 
 namespace rgen {
 void print_header(const std::filesystem::path&, const info&);
-void print_source(const std::filesystem::path&, const info&);
+void print_source(
+    const std::pair<std::filesystem::path, std::filesystem::path>&,
+    const info&);
 }  // namespace rgen

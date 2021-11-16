@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
     files.second = jsonfilepath.parent_path() / files.second;
   }
   rgen::print_header(files.first, rgeninfo);
-  rgen::print_source(files.second, rgeninfo);
+  rgen::print_source(files, rgeninfo);
 
   return 0;
 }
