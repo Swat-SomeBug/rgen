@@ -6,7 +6,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-#include <resource.h>
+#include <resource.hpp>
 #include <array>
 #include <iostream>
 

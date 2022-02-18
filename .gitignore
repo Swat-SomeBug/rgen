@@ -2,6 +2,7 @@
 .vscode
 .vs
 compile_commands.json
+**/*.swp
 
 
 .bdep/
